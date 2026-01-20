@@ -1,0 +1,7 @@
+# Requirements for gamma-ray flux map simulation and peak detection
+gammapy>=2.0
+astropy>=5.0
+numpy>=1.20
+matplotlib>=3.5
+scipy>=1.7
+jupyter
