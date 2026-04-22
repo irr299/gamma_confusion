@@ -1,0 +1,132 @@
+spiral_parameters:
+  - inner_radius_in_kpc: 8.15
+    name: 3kpc
+    norm: 1.0
+    radius_ref_in_kpc: 3.52
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.0
+    tan_phi_kink: 0.0
+    theta_kink_in_radian: 1.4835298641951802
+    theta_max_in_radian: 6.283185307179586
+    theta_min_in_radian: 0.0
+  - inner_radius_in_kpc: 8.15
+    name: Local
+    norm: 1.0
+    radius_ref_in_kpc: 8.6
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.20163536937154192
+    tan_phi_kink: 0.20163536937154192
+    theta_kink_in_radian: 1.413716694115407
+    theta_max_in_radian: 2.0943951023931953
+    theta_min_in_radian: 0.8726646259971648
+  - inner_radius_in_kpc: 8.15
+    name: Norma_inner
+    norm: 1.0
+    radius_ref_in_kpc: 4.46
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.354118572530698
+    tan_phi_kink: -0.017455064928217585
+    theta_kink_in_radian: 1.2566370614359172
+    theta_max_in_radian: 2.677945044588987
+    theta_min_in_radian: 0.5880026035475675
+  - inner_radius_in_kpc: 8.15
+    name: Norma_outer
+    norm: 1.0
+    radius_ref_in_kpc: 12.24
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.21255656167002213
+    tan_phi_kink: 0.05240777928304121
+    theta_kink_in_radian: 1.2566370614359172
+    theta_max_in_radian: 2.117585167684144
+    theta_min_in_radian: -3.6052402625905993
+  - inner_radius_in_kpc: 8.15
+    name: Perseus_inner
+    norm: 1.0
+    radius_ref_in_kpc: 7.315762923551887
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.2679491924311227
+    tan_phi_kink: 0.2679491924311227
+    theta_kink_in_radian: -0.4363323129985824
+    theta_max_in_radian: -0.4363323129985824
+    theta_min_in_radian: -2.999695598985629
+  - inner_radius_in_kpc: 8.15
+    name: Perseus_outer
+    norm: 1.0
+    radius_ref_in_kpc: 8.87
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.15302150298122655
+    tan_phi_kink: 0.18173080006571574
+    theta_kink_in_radian: 0.8726646259971648
+    theta_max_in_radian: 2.095592098445004
+    theta_min_in_radian: -0.4363323129985824
+  - inner_radius_in_kpc: 8.15
+    name: Sct_Cen_inner
+    norm: 1.0
+    radius_ref_in_kpc: 4.91
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.21438142424973086
+    tan_phi_kink: 0.25118263847885025
+    theta_kink_in_radian: 1.1693705988362009
+    theta_max_in_radian: 2.2264919530364327
+    theta_min_in_radian: 0.0
+  - inner_radius_in_kpc: 8.15
+    name: Sct_Cen_outer
+    norm: 1.0
+    radius_ref_in_kpc: 6.4
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.17632698070846498
+    tan_phi_kink: 0.17632698070846498
+    theta_kink_in_radian: 2.2264919530364327
+    theta_max_in_radian: 7.502536839970931
+    theta_min_in_radian: 2.2264919530364327
+  - inner_radius_in_kpc: 8.15
+    name: Sgr_Car_extent
+    norm: 1.0
+    radius_ref_in_kpc: 5.91
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.17632698070846498
+    tan_phi_kink: 0.17632698070846498
+    theta_kink_in_radian: -0.12217304763960307
+    theta_max_in_radian: -0.12217304763960307
+    theta_min_in_radian: -2.356194490192345
+  - inner_radius_in_kpc: 8.15
+    name: Sgr_Car_inner
+    norm: 1.0
+    radius_ref_in_kpc: 6.04
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.017455064928217585
+    tan_phi_kink: 0.3076401696598983
+    theta_kink_in_radian: 1.1519173063162575
+    theta_max_in_radian: 2.1467549799530254
+    theta_min_in_radian: -0.12217304763960307
+  - inner_radius_in_kpc: 8.15
+    name: Sgr_Car_outer
+    norm: 1.0
+    radius_ref_in_kpc: 8.2
+    sigma_off_in_kpc: 0.336
+    sigma_scale: 0.036
+    tan_phi: 0.17632698070846498
+    tan_phi_kink: 0.17632698070846498
+    theta_kink_in_radian: 2.1467549799530254
+    theta_max_in_radian: 4.553733718198288
+    theta_min_in_radian: 2.1467549799530254
+flare_parameters:
+  inner_radius_in_kpc: 7.0
+  sigma_off_in_kpc: 0.02
+  sigma_scale: 0.036
+warp_parameters:
+  exponent: 1.4
+  inner_radius_in_kpc: 6.21
+  offset_angle_in_radian: 0.253
+  scale_height_in_kpc: 0.037
+  sun_offset_in_radian: 1.5707963267948966
