@@ -1,0 +1,53 @@
+[project]
+name = "gammapop"
+version = "1.0.0"
+description = "A library to generate a population model of Galactic VHE gamma-ray sources."
+authors = [{name = "Constantin Steppa", email = "steppa@uni-potsdam.de"}]
+readme = "README.md"
+requires-python = ">=3.10"
+
+
+
+
+# Requirements: This is done differently by poetry!
+dependencies = [
+    "corner>=2.2.2",
+    "gammapy>=1.0.1",
+    "astropy>=5.2.2",
+    "ipykernel>=6.22.0",
+    "matplotlib>=3.7.1",
+    "numba>=0.56.4",
+    "numpy>=1.23.5",
+    "scipy>=1.10.1",
+    "tables>=3.8.0",
+    "tqdm>=4.65.0",
+]
+
+[options]
+
+
+install_requires =[
+    "corner>=2.2.2",
+    "gammapy>=1.0.1",
+    "astropy>=5.2.2",
+    "ipykernel>=6.22.0",
+    "matplotlib>=3.7.1",
+    "numba>=0.56.4",
+    "numpy>=1.23.5",
+    "scipy>=1.10.1",
+    "tables>=3.8.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=18.3-alpha.0",
+]
+
+[build-system]
+requires = ["setuptools >= 35.0.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["gammapop"]
+
