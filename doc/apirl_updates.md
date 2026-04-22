@@ -1,12 +1,5 @@
-# gamma_source_efficiency
 # Code Changes — April 2026
 **Topic:** Understanding the low detection efficiency (~7.5%) of simulated gamma-ray sources in the H.E.S.S. Galactic Plane Survey (HGPS) 
-
----
-
-## Background
-
-The thesis investigates why only ~7.5% of a simulated Galactic gamma-ray source population (1000 sources) are flagged as detectable by the HGPS survey model.
 
 ---
 
@@ -30,9 +23,10 @@ The graph second new graph gives better understanding actually.
 
 This reads the HGPS sensitivity map at a given sky position and returns the minimum detectable integral flux (>1 TeV) for a point source at that location. It has been restored with the `sensitivity_scale` modification described below.
 
+
 ### 1b. New parameter: `detection_psf`
 
-```python
+```
 HGPS(detection_psf=0.08 * u.deg)   # default — average HGPS PSF
 HGPS(detection_psf=0.15 * u.deg)   # softer penalty for extended sources
 ```
@@ -43,9 +37,16 @@ It controls the PSF value used only in the extended-source threshold correction:
 threshold_extended = threshold_point_source × sqrt(1 + (extent / detection_psf)²)
 ```
 
+It is the PSF value plugged into the formula above. Nothing more, nothing less.
+
+In the original code it was hardcoded as self.psf = 0.08°. The problem with that is:
+
+self.psf = 0.08° is an average across the whole HGPS footprint. The actual PSF varies — it is sharper near the telescope pointing centres and broader at the edges. Using one fixed value applies the same penalty everywhere.
+
+The psf attribute is also used for other things (e.g., in the notebook's min_distance calculation and extent comparisons). Separating detection_psf from psf lets you tune the threshold formula independently without side effects.
+
 The fixed value `psf = 0.08°` used in the original code is an average across the whole survey footprint. For a source with `extent = 0.2°`, this multiplier is **2.7×** — the source must be nearly 3 times brighter than a point source at the same position to be detected. By decoupling `detection_psf` from `self.psf`, we can study how sensitive the detection count is to the assumed PSF without changing any other calculation.
 
-!! I still have some question here to undersatnd the implementation. The extended source correction should be understood.
 
 **Extent penalty at different PSF assumptions:**
 
@@ -56,11 +57,12 @@ The fixed value `psf = 0.08°` used in the original code is an average across th
 | 0.2° | 2.7× | 1.9× | 1.6× |
 | 0.4° | 5.1× | 3.5× | 2.8× |
 
+
 **Vary `detection_psf`** (`0.08`, `0.12`, `0.15` deg) and re-run the comparison to quantify how much of the detection inefficiency is an artefact of the simplified PSF-averaged threshold formula vs. a genuine flux deficit.
 
 ### 1c. New method: `get_detection_breakdown(sky_coord, flux, extent)`
 
-This gives teh understanding of the source non-detection.
+This gives the understanding of the source non-detection.
 
 Returns a Python `dict` of mutually exclusive boolean arrays, one per source, classifying each non-detected source by the exact reason it was missed:
 
@@ -107,9 +109,3 @@ Loops over **37 values** of `sensitivity_scale` from 0.2 to 2.0. For each value,
 This is the main calibration tool: it tells us how far *the simulation's effective flux scale* is from what the real HGPS sensitivity map expects.
 
 Again this is to find the `sensitivity_scale` that would reproduce 78 real HGPS detections. If the crossing happens at `scale ≈ 0.3–0.5`, the simulation is producing sources that are systematically fainter than what the real Galactic population needs to be — pointing to the luminosity function parameters. If the crossing is near `1.0`, the model is well-calibrated.
-
-### 2c. Method B peak threshold fix (cell 23)
-```
-threshold_value = float(np.percentile(non_zero_values, 25))  # 25th percentile
-```
-The 25th-percentile of surviving (non-zero) pixel values is a physically motivated floor. It removes the faintest quarter of surviving pixels (typically edge-of-footprint noise where the sensitivity is lowest) while keeping genuine faint peaks well above the noise floor. This makes Method B (map-based detection) a more meaningful comparison to Method A (source-based detection).
